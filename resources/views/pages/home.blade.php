@@ -143,14 +143,20 @@
         <div class="user-container">
             <div class="header">ユーザー</div>
             @foreach ($users as $user)
-                <div class="user-card">
-                    <div class="img-container">
-                        <img src="https://placehold.jp/150x150.png" alt="" class="user-image">
+                <form method="POST" action="{{ route('user') }}">
+                    <input type="hidden" name="target" value="{{ hash('sha256', $user['user_id']) }}">
+                    @csrf
+                    <div class="user-card" :href="route('user')"
+                                        onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        <div class="img-container">
+                            <img src="https://placehold.jp/150x150.png" alt="" class="user-image">
+                        </div>
+                        <div class="username-container">
+                            <div>{{ $user['name'] }}</div>
+                        </div>
                     </div>
-                    <div class="username-container">
-                        <div>{{ $user['name'] }}</div>
-                    </div>
-                </div>
+                </form>
             @endforeach
         </div>
         <div class="talk-container">

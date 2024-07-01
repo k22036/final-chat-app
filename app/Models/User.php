@@ -17,6 +17,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'user_id',
         'name',
         'email',
         'password',
@@ -64,5 +65,22 @@ class User extends Authenticatable
     public function fetchAllUsersExceptMe($id): array
     {
         return User::where('id', '!=', $id)->get()->toArray();
+    }
+
+    /**
+     * Fetch user by hashed user_id
+     *
+     * @param string $target
+     * @return array<string>
+     */
+    public function fetchUser($target): array
+    {
+        $users = User::all()->toArray();
+        foreach ($users as $user) {
+            if (hash('sha256', $user['user_id']) === $target) {
+                return $user;
+            }
+        }
+        throw new \Exception('User not found');
     }
 }

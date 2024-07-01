@@ -14,6 +14,7 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/home', [HomeController::class, 'home'])->name('home');
+    Route::post('/user', [HomeController::class, 'user'])->name('user');
 });
 
 Route::middleware('auth')->group(function () {
@@ -21,5 +22,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/error', function () {
+    return view('pages.error');
+})->name('error');
 
 require __DIR__ . '/auth.php';

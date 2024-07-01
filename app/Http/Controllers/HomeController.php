@@ -14,4 +14,14 @@ class HomeController extends Controller
         $user = $request->user();
         return view('pages.home')->with('users', $User->fetchAllUsersExceptMe($user->id));
     }
+
+    public function user(Request $request)
+    {
+        if ($request->has('target')) {
+            $User = new User();
+            $user = $User->fetchUser($request->input('target'));
+            return view('pages.user', ['user' => $user]);
+        }
+        return view('pages.error');
+    }
 }
