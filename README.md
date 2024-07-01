@@ -11,3 +11,8 @@ php artisan serve
 ```zsh
 php artisan migrate
 ```
+
+freshする場合
+```zsh
+php artisan migrate:fresh
+```
