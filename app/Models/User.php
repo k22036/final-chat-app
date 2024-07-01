@@ -44,4 +44,25 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Fetch all users
+     *
+     * @return array<string>
+     */
+    public function fetchAllUsers(): array
+    {
+        return User::all()->toArray();
+    }
+
+    /**
+     * Fetch all users except me
+     *
+     * @param int $id
+     * @return array<string>
+     */
+    public function fetchAllUsersExceptMe($id): array
+    {
+        return User::where('id', '!=', $id)->get()->toArray();
+    }
 }

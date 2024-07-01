@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ホーム画面</title>
-    <link rel="stylesheet" href="home.css">
 
     <style>
         body {
@@ -143,22 +142,16 @@
     <div class="main-container">
         <div class="user-container">
             <div class="header">ユーザー</div>
-            <div class="user-card">
-                <div class="img-container">
-                    <img src="https://placehold.jp/150x150.png" alt="" class="user-image">
+            @foreach ($users as $user)
+                <div class="user-card">
+                    <div class="img-container">
+                        <img src="https://placehold.jp/150x150.png" alt="" class="user-image">
+                    </div>
+                    <div class="username-container">
+                        <div>{{ $user['name'] }}</div>
+                    </div>
                 </div>
-                <div class="username-container">
-                    <div>username _____testtesttesttesttesttesttestーーーーーーーーーーーーー</div>
-                </div>
-            </div>
-            <div class="user-card">user</div>
-            <div class="user-card">user</div>
-            <div class="user-card">user</div>
-            <div class="user-card">user</div>
-            <div class="user-card">user</div>
-            <div class="user-card">user</div>
-            <div class="user-card">user</div>
-
+            @endforeach
         </div>
         <div class="talk-container">
             <div class="header">トーク</div>
