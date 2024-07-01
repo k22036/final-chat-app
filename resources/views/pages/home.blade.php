@@ -59,6 +59,7 @@
             align-items: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s;
+            cursor: pointer;
         }
 
         .user-card:hover,
@@ -90,7 +91,8 @@
             text-overflow: ellipsis;
         }
 
-        .logout-container {
+        .logout-container,
+        .profile {
             display: flex;
             align-items: center;
             padding: 10px;
@@ -179,6 +181,11 @@
             <div class="talk-card">talk</div>
         </div>
         <div class="other-container">
+            <div class="profile" onclick="window.location='{{ route('profile.edit') }}';">
+                {{ Auth::user()->name }}
+                {{ __('(Profile)') }}
+            </div>
+
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <div class="logout-container" :href="route('logout')"
@@ -195,6 +202,7 @@
                 </div>
             </form>
         </div>
+        
     </div>
 
 </body>
