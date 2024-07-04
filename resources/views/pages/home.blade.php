@@ -144,8 +144,8 @@
             <div class="header">ユーザー</div>
             @foreach ($users as $user)
                 <form method="POST" action="{{ route('user') }}">
-                    <input type="hidden" name="target" value="{{ hash('sha256', $user['user_id']) }}">
                     @csrf
+                    <input type="hidden" name="target" value="{{ hash('sha256', $user['user_id']) }}">
                     <div class="user-card" :href="route('user')"
                                         onclick="event.preventDefault();
                                         this.closest('form').submit();">
