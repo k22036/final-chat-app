@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('id');
             $table->text('room_id');
             $table->longText('content');
-            $table->integer('created_by');
+            $table->uuid('created_by');
             $table->timestamps();
         });
     }
