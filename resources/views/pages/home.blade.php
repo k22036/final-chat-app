@@ -102,6 +102,10 @@
             cursor: pointer;
         }
 
+        .profile:hover {
+            background-color: #f0f0f0;
+        }
+
         .logout-container:hover {
             background-color: #f0f0f0;
         }
@@ -161,23 +165,23 @@
         </div>
         <div class="talk-container">
             <div class="header">トーク</div>
-            <div class="talk-card">
-                <div class="img-container">
-                    <img src="https://placehold.jp/150x150.png" alt="" class="user-image">
-                </div>
-                <div class="username-container">
-                    <div>username　ーーーーーーーーーーーーーーーーーーーーーーーーーーー</div>
-                </div>
-            </div>
-            <div class="talk-card">talk</div>
-            <div class="talk-card">talk</div>
-            <div class="talk-card">talk</div>
-            <div class="talk-card">talk</div>
-            <div class="talk-card">talk</div>
-            <div class="talk-card">talk</div>
-            <div class="talk-card">talk</div>
-            <div class="talk-card">talk</div>
-            <div class="talk-card">talk</div>
+            @foreach ($rooms as $room)
+                <form method="POST" action="{{ route('chat') }}">
+                    @csrf
+                    <input type="hidden" name="target" value="{{ hash('sha256', $user['user_id']) }}">
+                    <div class="talk-card" :href="route('chat')"
+                                        onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        <div class="img-container">
+                            <img src="https://placehold.jp/150x150.png" alt="" class="user-image">
+                        </div>
+                        <div class="username-container">
+                            <div>{{ Auth::user()->name === $room->name1 ? $room->name2 : $room->name1}}</div>
+                        </div>
+                        <small>{{ \Carbon\Carbon::parse($room->last_updated)->timezone('Asia/Tokyo')->format('Y-m-d H:i:s') }}</small>
+                    </div>
+                </form>
+            @endforeach
         </div>
         <div class="other-container">
             <div class="profile" onclick="window.location='{{ route('profile.edit') }}';">

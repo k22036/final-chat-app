@@ -61,7 +61,7 @@ class Room extends Model
         $room->created_by = $user1['user_id'];
         
         $manager = new RoomsManager();
-        $manager->openRoom($room->room_id);
+        $manager->openRoom($room->room_id, $user1['name'], $user2['name']);
 
         $room->save();
     }
@@ -98,7 +98,7 @@ class Room extends Model
         
         $manager = new RoomsManager();
         $manager->updateRoom($room->room_id);
-        
+
         $room->save();
     }
 }

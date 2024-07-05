@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id('id');
             $table->text('room_id');
             $table->timestamp('last_updated')->useCurrent();
+            $table->string('name1');
+            $table->string('name2');
         });
     }
 

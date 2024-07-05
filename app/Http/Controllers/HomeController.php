@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RoomsManager;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\User;
@@ -12,7 +13,13 @@ class HomeController extends Controller
     {
         $User = new User();
         $user = $request->user();
-        return view('pages.home')->with('users', $User->fetchAllUsersExceptMe($user->id));
+
+        $users = $User->fetchAllUsersExceptMe($user->id);
+
+        $manager = new RoomsManager();
+        $rooms = $manager->fetchRoomsByUser($user);
+
+        return view('pages.home', ['users' => $users, 'rooms' => $rooms]);
     }
 
     public function user(Request $request)
