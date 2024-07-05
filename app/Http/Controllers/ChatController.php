@@ -31,6 +31,9 @@ class ChatController extends Controller
     public function addContent(Request $request)
     {
         if ($request->has('room_id') && $request->has('content')) {
+            if (empty($request->input('content'))) {
+                return $this->chat($request);
+            }
             $Room = new Room();
             $Room->addContent($request->input('room_id'), $request->input('content'), $request->user());
             return $this->chat($request);
