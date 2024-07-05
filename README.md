@@ -1,14 +1,22 @@
 # chat app
 
-## 基本
+## Dockerを使って動かす
+
+```zsh
+make build
+```
+
+```zsh
+make start
+```
+
+## 開発用
 
 ### start
 
 ```zsh
 php artisan serve
 ```
-
-## 開発用
 
 ### DB migrate
 
