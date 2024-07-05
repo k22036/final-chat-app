@@ -168,7 +168,7 @@
             @foreach ($rooms as $room)
                 <form method="POST" action="{{ route('chat') }}">
                     @csrf
-                    <input type="hidden" name="target" value="{{ hash('sha256', $user['user_id']) }}">
+                    <input type="hidden" name="target" value="{{ hash('sha256', Auth::user()->user_id === $room->user_id1 ? $room->user_id2 : $room->user_id1) }}">
                     <div class="talk-card" :href="route('chat')"
                                         onclick="event.preventDefault();
                                         this.closest('form').submit();">

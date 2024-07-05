@@ -17,6 +17,8 @@ return new class extends Migration
             $table->timestamp('last_updated')->useCurrent();
             $table->string('name1');
             $table->string('name2');
+            $table->uuid('user_id1');
+            $table->uuid('user_id2');
         });
     }
 

@@ -16,12 +16,14 @@ class RoomsManager extends Model
      * 
      * @param string $room_id
      */
-    public function openRoom($room_id, $name1, $name2)
+    public function openRoom($room_id, $name1, $name2, $user_id1, $user_id2)
     {
         DB::table('roomsManager')->insert([
             'room_id' => $room_id,
             'name1' => $name1,
-            'name2' => $name2
+            'name2' => $name2,
+            'user_id1' => $user_id1,
+            'user_id2' => $user_id2
         ]);
     }
 
