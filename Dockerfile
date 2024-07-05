@@ -1,9 +1,5 @@
 FROM php:8.2-apache
 
-# install php version 8.2
-# RUN amazon-linux-extras install -y php8.2
-# RUN yum install -y php-pecl-zip php-mbstring php-dom
-
 # install dependencies
 RUN apt-get update && apt-get install -y \
     libpq-dev \
