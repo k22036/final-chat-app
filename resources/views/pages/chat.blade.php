@@ -28,6 +28,8 @@
         }
 
         .header {
+            display: flex;
+            justify-content: space-between;
             background-color: rgb(176, 239, 218);
             border-radius: 10px 10px 0 0;
             padding: 20px;
@@ -39,6 +41,14 @@
         .back {
             width: 15px;
             height: 15px;
+            fill: #333;
+            cursor: pointer;
+            transition: fill 0.3s;
+        }
+
+        .reload {
+            width: 20px;
+            height: 20px;
             fill: #333;
             cursor: pointer;
             transition: fill 0.3s;
@@ -160,6 +170,13 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>
             </div>
             {{ $user['name'] }}
+            <form method="POST" action="{{ route('chat') }}">
+                @csrf
+                <input type="hidden" name="target" value="{{ hash('sha256', $user['user_id']) }}">
+                <div class="reload" onclick="event.preventDefault();this.closest('form').submit();">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M386.3 160H336c-17.7 0-32 14.3-32 32s14.3 32 32 32H464c17.7 0 32-14.3 32-32V64c0-17.7-14.3-32-32-32s-32 14.3-32 32v51.2L414.4 97.6c-87.5-87.5-229.3-87.5-316.8 0s-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3s163.8-62.5 226.3 0L386.3 160z"/></svg>
+                </div>
+            </form>
         </div>
         <div class="chat-container" id="chat-container">
             @foreach ($contents as $content)
@@ -182,9 +199,7 @@
                 <div class="text-container">
                     <textarea name="content"></textarea>
                 </div>
-                <div class="submit-container" :href="route('add-content')"
-                                        onclick="event.preventDefault();
-                                        this.closest('form').submit();">
+                <div class="submit-container" onclick="event.preventDefault();this.closest('form').submit();">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="send-icon"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M16.1 260.2c-22.6 12.9-20.5 47.3 3.6 57.3L160 376V479.3c0 18.1 14.6 32.7 32.7 32.7c9.7 0 18.9-4.3 25.1-11.8l62-74.3 123.9 51.6c18.9 7.9 40.8-4.5 43.9-24.7l64-416c1.9-12.1-3.4-24.3-13.5-31.2s-23.3-7.5-34-1.4l-448 256zm52.1 25.5L409.7 90.6 190.1 336l1.2 1L68.2 285.7zM403.3 425.4L236.7 355.9 450.8 116.6 403.3 425.4z"/></svg>
                 </div>
             </div>
