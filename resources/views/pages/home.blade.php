@@ -150,9 +150,7 @@
                 <form method="POST" action="{{ route('user') }}">
                     @csrf
                     <input type="hidden" name="target" value="{{ hash('sha256', $user['user_id']) }}">
-                    <div class="user-card" :href="route('user')"
-                                        onclick="event.preventDefault();
-                                        this.closest('form').submit();">
+                    <div class="user-card" onclick="event.preventDefault();this.closest('form').submit();">
                         <div class="img-container">
                             <img src="https://placehold.jp/150x150.png" alt="" class="user-image">
                         </div>
@@ -169,9 +167,7 @@
                 <form method="POST" action="{{ route('chat') }}">
                     @csrf
                     <input type="hidden" name="target" value="{{ hash('sha256', Auth::user()->user_id === $room->user_id1 ? $room->user_id2 : $room->user_id1) }}">
-                    <div class="talk-card" :href="route('chat')"
-                                        onclick="event.preventDefault();
-                                        this.closest('form').submit();">
+                    <div class="talk-card" onclick="event.preventDefault();this.closest('form').submit();">
                         <div class="img-container">
                             <img src="https://placehold.jp/150x150.png" alt="" class="user-image">
                         </div>
@@ -191,9 +187,7 @@
 
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <div class="logout-container" :href="route('logout')"
-                                            onclick="event.preventDefault();
-                                            this.closest('form').submit();">
+                <div class="logout-container" onclick="event.preventDefault();this.closest('form').submit();">
 
                     <div class="logout-text">ログアウト</div>
                     <div class="img-container logout-icon">
