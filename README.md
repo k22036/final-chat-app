@@ -1,5 +1,29 @@
 # chat app
 
+## 環境設定
+
+### .env
+
+・52行目
+
+```env
+MAIL_USERNAME=example@gmail.com
+```
+
+適切なメールアドレスに変える
+
+・53行目
+
+```env
+MAIL_PASSWORD=password
+```
+
+適切なアプリパスワードに変える
+
+以下はアプリパスワードへのリンク
+
+[https://myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords)
+
 ## Dockerを使って動かす
 
 ```zsh
