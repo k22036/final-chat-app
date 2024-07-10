@@ -16,8 +16,17 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/home', [HomeController::class, 'home'])->name('home');
     Route::post('/user', [HomeController::class, 'user'])->name('user');
+    Route::get('/user', function () {
+        return redirect(route('error'));
+    });
     Route::post('/chat', [ChatController::class, 'chat'])->name('chat');
+    Route::get('/chat', function () {
+        return redirect(route('error'));
+    });
     Route::post('/add-content', [ChatController::class, 'addContent'])->name('add-content');
+    Route::get('/add-content', function () {
+        return redirect(route('error'));
+    });
 });
 
 Route::middleware('auth')->group(function () {
