@@ -26,11 +26,11 @@ ENV PATH "$PATH:/opt/composer/vendor/bin"
 # install laravel
 RUN composer global require "laravel/installer"
 
-# laravelプロジェクトを作成
+# copy laravel project
 WORKDIR /var/www
 COPY . laravel
 
-# ポートを公開
+# setting laravel
 EXPOSE 8000
 
 WORKDIR /var/www/laravel
