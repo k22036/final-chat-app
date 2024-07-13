@@ -34,7 +34,13 @@ make build
 make start
 ```
 
+## cloneした場合
+
+.env.exampleに従って環境設定をする必要があります
+
 ## 開発用
+
+以下は開発用
 
 ### start
 
@@ -54,7 +60,14 @@ freshする場合
 php artisan migrate:fresh
 ```
 
+## 利用技術
+
+・Supabase
+
+・Laravel Breeze
+
 ## 課題
 
 ・同じ名前のユーザが存在している時の処理が怪しい
+
 ・アイコンの機能が未実装
