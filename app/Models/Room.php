@@ -59,7 +59,7 @@ class Room extends Model
         $room->room_id = $this->getRoomID($user1, $user2);
         $room->content = '';
         $room->created_by = $user1['user_id'];
-        
+
         $manager = new RoomsManager();
         $manager->openRoom($room->room_id, $user1['name'], $user2['name'], $user1['user_id'], $user2['user_id']);
 
@@ -95,10 +95,25 @@ class Room extends Model
         $room->room_id = $roomID;
         $room->content = $content;
         $room->created_by = $user['user_id'];
-        
+
         $manager = new RoomsManager();
         $manager->updateRoom($room->room_id);
 
         $room->save();
+    }
+
+    /**
+     * Delete contents by user
+     * 
+     * @param array<string, string> $user
+     * @return void
+     */
+    public function deleteContentsByUser($user)
+    {
+        $hashedID = hash('sha256', $user['user_id'] . $user['email']);
+
+        // 前方一致または後方一致するものを削除
+        Room::where('room_id', 'like', $hashedID . '%')->delete();
+        Room::where('room_id', 'like', '%' . $hashedID)->delete();
     }
 }

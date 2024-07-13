@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Room;
+use App\Models\RoomsManager;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -47,6 +49,12 @@ class ProfileController extends Controller
         ]);
 
         $user = $request->user();
+
+        $Room = new Room();
+        $Room->deleteContentsByUser($user);
+
+        $manager = new RoomsManager();
+        $manager->deleteRoomsByUserID($user['user_id']);
 
         Auth::logout();
 

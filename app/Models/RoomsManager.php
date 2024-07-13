@@ -55,4 +55,18 @@ class RoomsManager extends Model
 
         return $rooms;
     }
+
+    /**
+     * delete rooms by userID
+     * 
+     * @param string $userID
+     * return void
+     */
+    public function deleteRoomsByUserID($userID)
+    {
+        DB::table('roomsManager')
+            ->where('user_id1', $userID)
+            ->orWhere('user_id2', $userID)
+            ->delete();
+    }
 }
