@@ -26,9 +26,15 @@ MAIL_PASSWORD=password
 
 ## Dockerを使って動かす
 
+Docker環境が必要です
+
+### ビルド
+
 ```zsh
 make build
 ```
+
+### アプリケーションの起動
 
 ```zsh
 make start
