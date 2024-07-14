@@ -40,6 +40,8 @@ make build
 make start
 ```
 
+起動するとターミナルにアプリケーションのリンクが出てきます
+
 ## cloneした場合
 
 .env.exampleに従って環境設定をする必要があります
@@ -71,6 +73,16 @@ php artisan migrate:fresh
 ・Supabase
 
 ・Laravel Breeze
+
+### 参考
+
+[GitのコミットメッセージにPrefixをつけよう！](https://qiita.com/a_ya_ka/items/c472a02051d78e4c0855)
+
+[Creating a Laravel Project](https://laravel.com/docs/11.x/installation#creating-a-laravel-project)
+
+[Use Supabase with Laravel](https://supabase.com/docs/guides/getting-started/quickstarts/laravel)
+
+
 
 ## 課題
 
