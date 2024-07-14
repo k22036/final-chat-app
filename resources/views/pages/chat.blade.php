@@ -180,14 +180,26 @@
         </div>
         <div class="chat-container" id="chat-container">
             @foreach ($contents as $content)
-                <div class="msg-container {{ $content['created_by'] === $user['user_id'] ? 'msg-left' : 'msg-right' }}">
-                    <div class="msg">
-                        {{ $content['content'] }}
+                @if ($content['created_by'] === $user['user_id'])
+                    <div class="msg-container msg-left">
+                        <div class="img-container">
+                            <img src="https://placehold.jp/150x150.png" alt="" width="50px" height="50px">
+                        </div>
+                        <div class="msg">
+                            {{ $content['content'] }}
+                        </div>
                     </div>
-                    <div class="img-container">
-                        <img src="https://placehold.jp/150x150.png" alt="" width="50px" height="50px">
+                @else
+                    <div class="msg-container msg-right">
+                        <div class="msg">
+                            {{ $content['content'] }}
+                        </div>
+                        <div class="img-container">
+                            <img src="https://placehold.jp/150x150.png" alt="" width="50px" height="50px">
+                        </div>
                     </div>
-                </div>
+                    
+                @endif
             @endforeach
         </div>
 
