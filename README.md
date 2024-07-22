@@ -44,6 +44,12 @@ make start
 
 ## cloneした場合
 
+以下はこのプロジェクトのgithubのレポジトリです
+
+こちらからクローンしてください
+
+[https://github.com/k22036/final-chat-app](https://github.com/k22036/final-chat-app)
+
 .env.exampleに従って環境設定をする必要があります
 
 ## 開発用
@@ -81,8 +87,6 @@ php artisan migrate:fresh
 [Creating a Laravel Project](https://laravel.com/docs/11.x/installation#creating-a-laravel-project)
 
 [Use Supabase with Laravel](https://supabase.com/docs/guides/getting-started/quickstarts/laravel)
-
-
 
 ## 課題
 
